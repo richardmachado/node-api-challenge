@@ -1,16 +1,32 @@
 const express = require('express');
+const helmet = require('helmet')
+const cors = require('cors')
+const projectRouter = require('./projects/projectRouter')
+const actionRouter = require('./actions/actionRouter')
+//const ActionByProject = require('./actions/ActionByProject')
+
 const server = express();
 
-server.use(express.json());
+// 3rd party middleware
 
-const actionsRouter = require("./actions/actionsRouter.js");
-server.use("/api/actions", actionsRouter);
+server.use(express.json())
+server.use(helmet())
+server.use(logger)
+server.use(cors())
 
-const projectsRouter = require("./projects/projectsRouter.js");
-server.use("/api/projects", projectsRouter);
 
-server.get("/", (req,res) => {
-    res.send("<h2>Lambda API Sprint</h2>");
+server.use('/api/projects/', projectRouter)
+server.use('/api/actions/', actionRouter)
+//server.use('/api/actionsbyproject', ActionByProject)
+
+server.get('/', (req, res) => {
+  res.send(`Sprint Challenge`);
 });
+
+function logger(req, res, next) {
+  console.log(`Method ${req.method}, the URL was ${req.url}, ${Date(Date.now).toString()}`)
+  next()
+}
+
 
 module.exports = server;
