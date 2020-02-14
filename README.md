@@ -40,13 +40,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+Router and Middleware
+
 - [ ] Describe Middleware?
+
+Middleware are small functions that can be used anywhere in your app, so they are highly reusable. They are used to check data before it reaches another function and return an error if data doesn't meet our criteria.
 
 - [ ] Describe a Resource?
 
+A resource is what gets returned to the client after a successful request 
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+An API can return a 200 or 201 as well as the data requested to show the request was successful. 
+
 - [ ] How can we partition our application into sub-applications?
+
+By using routers, we can partition our application in the the different components, or urls that the client can visit.
 
 ## Minimum Viable Product
 
