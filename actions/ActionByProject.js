@@ -18,9 +18,8 @@ router.get('/:id', validateProjectId, (req, res) => {
 
 function validateProjectId(req, res, next){
   const id = req.params.id
-
-  projectDb.get(id)
-  .then(exists =>{
+    projectDb.get(id)
+     .then(exists =>{
       !exists && res.status(400).json({message: "validateProjectID Project does not exist"})
   })
 
